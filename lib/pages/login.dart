@@ -8,6 +8,14 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+
+  bool _obscureText = true;
+
+  void _toggle() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -81,15 +89,35 @@ class _LoginState extends State<Login> {
                     ),
                       Container(
                         padding : EdgeInsets.fromLTRB(20.0, 10.0, 0.0, 0.0),
-                        child:TextField(
-                          style: TextStyle(
-                            color: Colors.white
+                        child:Row(
+                          children: <Widget>[
+                            Expanded(
+                              flex: 6,
+                                child: TextField(
+                                obscureText: _obscureText,
+                                style: TextStyle(
+                                  color: Colors.white
+                                ),
+                                decoration: InputDecoration(
+                                  border : InputBorder.none,
+                                  hintText:"Password",
+                                  hintStyle:TextStyle(color: Colors.white)
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                                child: IconButton(
+                                onPressed: _toggle,
+                                icon: Icon(_obscureText==true ? Icons.visibility_off : Icons.visibility,
+                                size: 25.0,
+                                color: Colors.white
+                                ,),
+                                color:Colors.purpleAccent,
+                                iconSize: 10,
                           ),
-                          decoration: InputDecoration(
-                            border : InputBorder.none,
-                            hintText:"Password",
-                            hintStyle:TextStyle(color: Colors.white)
-                          ),
+                            )
+                          ],
                         ),
                       ),
                       const Divider(
