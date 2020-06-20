@@ -63,6 +63,9 @@ class _LoginState extends State<Login> {
                       Container(
                         padding : EdgeInsets.fromLTRB(20.0, 10.0, 0.0, 0.0),
                         child:TextField(
+                          style: TextStyle(
+                            color: Colors.white
+                          ),
                           decoration: InputDecoration(
                             border : InputBorder.none,
                             hintText:"Username or email",
@@ -79,6 +82,9 @@ class _LoginState extends State<Login> {
                       Container(
                         padding : EdgeInsets.fromLTRB(20.0, 10.0, 0.0, 0.0),
                         child:TextField(
+                          style: TextStyle(
+                            color: Colors.white
+                          ),
                           decoration: InputDecoration(
                             border : InputBorder.none,
                             hintText:"Password",
@@ -95,40 +101,50 @@ class _LoginState extends State<Login> {
                     SizedBox(
                   height:20.0
                 ),
-                  Center(child: Text('Forgot Password?',
-                      style: TextStyle(
-                        color: Colors.purpleAccent
+                  Center(
+                    child: InkWell(
+                      child: Text('Forgot Password?',
+                        style: TextStyle(
+                          color: Colors.purpleAccent
+                        ),
                       ),
-                      ),
+                      onTap: () {print("Forgot Password?");},
+                    ),
                   ),
                   SizedBox(
                     height:20.0
                   ),
-                  Container(
+                  InkWell(
+                    onTap: () {print("Login");},
+                    child: Container(
                       height:50,
-                      margin:EdgeInsets.symmetric(horizontal:60.0),  
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Color.fromRGBO(49, 39, 79, 1),
-                      ),
-                      child:Center(
-                          child: Text('Login',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 3.0
-                      ),
-                      ),
-                      )
+                        margin:EdgeInsets.symmetric(horizontal:60.0),  
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          color: Color.fromRGBO(49, 39, 79, 1),
+                        ),
+                        child:Center(
+                            child: Text('Login',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 3.0
+                        ),
+                        ),
+                        )
+                    ),
                   ),
                   SizedBox(
                     height:20.0
                   ),
-                  Center(child: Text('Create Account',
-                      style: TextStyle(
-                        color: Colors.purpleAccent
-                      ),
-                      ),
+                  Center(child: InkWell(
+                    onTap: () {print("Create Acoount");},
+                        child: Text('Create Account',
+                        style: TextStyle(
+                          color: Colors.purpleAccent
+                        ),
+                        ),
+                  ),
                   ),
                 ]
                 ),
