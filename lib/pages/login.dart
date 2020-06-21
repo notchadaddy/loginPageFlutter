@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:login/services/loginMode.dart';
+import 'package:http/http.dart' as http;
 
 class Login extends StatefulWidget {
   Login({Key key}) : super(key: key);
@@ -7,8 +9,23 @@ class Login extends StatefulWidget {
   _LoginState createState() => _LoginState();
 }
 
+Future<LoginPost> login(String email, String pwd) async {
+  // final String apiUrlLogin = "http://127.0.0.1:5000/login";
+  // var response =
+  //     await http.post(apiUrlLogin, body: {"email": email, "password": pwd});
+  // if (200 == response.statusCode) {
+  //   final String loginData = response.body;
+  //   return (loginPostFromJson(loginData));
+  // } else {
+  //   return null;
+  // }
+}
+
 class _LoginState extends State<Login> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   bool _obscureText = true;
+  LoginPost _data;
 
   void _toggle() {
     setState(() {
@@ -64,10 +81,11 @@ class _LoginState extends State<Login> {
                     Container(
                       padding: EdgeInsets.fromLTRB(20.0, 10.0, 0.0, 0.0),
                       child: TextField(
+                        controller: emailController,
                         style: TextStyle(color: Colors.green[800]),
                         decoration: InputDecoration(
                             border: InputBorder.none,
-                            hintText: "Username or email",
+                            hintText: "Email",
                             hintStyle: TextStyle(color: Colors.green[800])),
                       ),
                     ),
@@ -84,6 +102,7 @@ class _LoginState extends State<Login> {
                           Expanded(
                             flex: 6,
                             child: TextField(
+                              controller: passwordController,
                               obscureText: _obscureText,
                               style: TextStyle(color: Colors.green[800]),
                               decoration: InputDecoration(
@@ -131,8 +150,14 @@ class _LoginState extends State<Login> {
                     ),
                     SizedBox(height: 20.0),
                     InkWell(
-                      onTap: () {
-                        print("Login");
+                      onTap: () async {
+                        final String email = emailController.text;
+                        final String pwd = passwordController.text;
+                        // final LoginPost data = await login(email, pwd);
+                        print(email + pwd);
+                        // setState(() {
+                        //   _data = data;
+                        // });
                       },
                       child: Container(
                           height: 50,
